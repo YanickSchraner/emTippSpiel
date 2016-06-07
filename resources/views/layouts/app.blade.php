@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,6 +48,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/teams') }}">Teams</a></li>
+                    <li><a href="{{ url('/groups') }}">Gruppen</a></li>
+                    <li><a href="{{ url('/schedule') }}">Spielplan</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -63,6 +66,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/user/me') }}"><i class="fa fa-btn fa-home"></i>Benutzerkonto</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -71,7 +75,6 @@
             </div>
         </div>
     </nav>
-
     @yield('content')
 
     <!-- JavaScripts -->

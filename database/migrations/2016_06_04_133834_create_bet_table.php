@@ -14,8 +14,8 @@ class CreateBetTable extends Migration
     {
         Schema::create('bets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('game_id');
-            $table->integer('user_id');
+            $table->integer('game_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('home_Score');
             $table->integer('away_Score');
             $table->integer('points')->nullable();

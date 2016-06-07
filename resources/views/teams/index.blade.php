@@ -5,6 +5,7 @@
     @foreach($teams as $team)
         <team>
             <h3>{{$team->name}}</h3>
+            {{$team->group->name}}
         </team>
     @endforeach
 @endsection

@@ -14,7 +14,7 @@ class CreateTeamTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('group_id');
+            $table->integer('group_id')->unsigned();
             $table->string('name',50);
             $table->string('status',50)->default('Gruppenphase');
             $table->integer('phase')->default(1);
