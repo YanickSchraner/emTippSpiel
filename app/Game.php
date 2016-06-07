@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    public function teams(){
-        $this->belongsTo('App\Team');
+    public function homeTeam(){
+        return $this->belongsTo('App\Team', 'home_team_id');
+    }
+
+    public function awayTeam(){
+        return $this->belongsTo('App\Team', 'away_team_id');
     }
 
     public function bets(){
-        $this->hasMany('App\Bet');
+        return $this->hasMany('App\Bet');
     }
 }
