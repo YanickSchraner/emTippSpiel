@@ -18,7 +18,7 @@
                                 <tbody class="">
                                 @foreach($group->teams as $team)
                                     <tr>
-                                        <td><a href="{{ action('TeamsController@getTeam',$team->name) }}">{{ $team->name }}</a></td>
+                                        <td><a href="{{ action('TeamsController@getTeam', $team->id) }}">{{ $team->name }}</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

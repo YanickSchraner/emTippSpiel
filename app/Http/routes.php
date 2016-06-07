@@ -20,5 +20,8 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/teams', 'TeamsController@index');
+Route::get('/teams/{team}', ['uses' =>'TeamsController@getTeam']);
 
 Route::get('/groups', 'GroupsController@index');
+
+Route::get('/schedule', 'ScheduleController@index');
