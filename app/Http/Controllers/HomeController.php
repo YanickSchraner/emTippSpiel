@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bet;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $bets = Bet::where('user_id', '=', Auth::user()->id)->get();
+        return view('home')->with('bets', $bets);
     }
 }

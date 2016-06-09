@@ -25,3 +25,4 @@ Route::get('/teams/{team}', ['uses' =>'TeamsController@getTeam']);
 Route::get('/groups', 'GroupsController@index');
 
 Route::get('/schedule', 'ScheduleController@index');
+Route::post('/schedule', 'ScheduleController@placeBet');

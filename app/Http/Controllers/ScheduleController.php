@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Bet;
 use App\Game;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Auth;
 
 use App\Http\Requests;
 
@@ -12,11 +12,14 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $games = Game::all();
-        $date = Carbon::parse($games->first()->time);
-        setlocale(LC_TIME, config('app.local'));
-        $date = $date->formatLocalized('%A %d %B %Y');
-        $games->first()->time = $date;
-        return view('schedule.index')->with('games', $games);
+        $games = Game::oldest('time')->get();
+        $bets = Bet::where('user_id', '=', Auth::user()->id)->get();
+        return view('schedule.index')->with('games', $games)->with('bets', $bets);
+    }
+
+    public function placeBet(Requests\PlaceBet $request)
+    {
+        Bet::create($request->all());
+        return redirect('schedule');
     }
 }

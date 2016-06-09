@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -26,5 +27,23 @@ class User extends Authenticatable
 
     public function bets(){
         return $this->hasMany('App\Bet');
+    }
+
+    public function getAllUsers(){
+        return User::all();
+    }
+
+    public function calculatePoints($userId){
+        $bets = Bet::where('user_id', '=', $userId)->get();
+        $points = $bets->sum('points');
+        return $points;
+    }
+
+    public static function getRanking(){
+        $bets = Bet::all();
+        $users = User::all();
+        foreach ($users as $user){
+            $userBets = $bets->filter('user_id', $user->id);
+        }
     }
 }
